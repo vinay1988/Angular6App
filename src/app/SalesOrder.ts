@@ -1,0 +1,33 @@
+export class SalesOrder{
+      SalesOrderId:number;
+      SalesOrderNumber : number;
+      ClientNo : number;
+      CompanyNo : number;
+      ContactNo : number;
+      DateOrdered : string;
+      CurrencyNo : number;
+      Salesman : number;
+      TermsNo : number;
+      ShipToAddressNo : number;
+      ShipViaNo : number;
+      Account : string;
+      Freight :  string;
+      CustomerPO  :  string;
+      DivisionNo : number;
+      TaxNo : number;
+      ShippingCost : string;
+      Notes : string;
+      Instructions : string;
+      StatusNo  : number;
+      SaleTypeNo  : number;
+      Salesman2  : number;
+      Salesman2Percent: string;
+      AuthorisedBy  : number;
+      DateAuthorised : string;
+      UpdatedBy  : number;
+      DLUP : string;
+      CurrencyDate : string;
+      IncotermNo  : number;
+      CreatedBy  : number;
+      CreateDate : Date;
+}
