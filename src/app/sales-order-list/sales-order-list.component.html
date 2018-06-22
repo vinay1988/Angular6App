@@ -21,27 +21,22 @@ tr:nth-child(even) {
 </style>
 </head>
 <body>
-
+  <div>
+    <a  routerLink="/addsalesorder">
+     Add SO
+    </a>
+  </div>
+  <br>
 <table>
   <tr>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Points</th>
+    <th>No</th>
+    <th>Date</th>
+    <th>Notes</th>
   </tr>
-  <tr>
-    <td>Jill</td>
-    <td>Smith</td>
-    <td>50</td>
-  </tr>
-  <tr>
-    <td>Eve</td>
-    <td>Jackson</td>
-    <td>94</td>
-  </tr>
-  <tr>
-    <td>Adam</td>
-    <td>Johnson</td>
-    <td>67</td>
+  <tr *ngFor="let so of _salesorder">
+    <td>{{so.SalesOrderNumber}}</td>
+    <td>{{so.DLUP}}</td>
+    <td>{{so.Notes}}</td>
   </tr>
 </table>
 

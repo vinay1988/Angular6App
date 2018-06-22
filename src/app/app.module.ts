@@ -8,6 +8,20 @@ import { EditSalesOrderComponent } from './edit-sales-order/edit-sales-order.com
 import { SalesOrderDetailComponent } from './sales-order-detail/sales-order-detail.component';
 import { SalesorderService } from './salesorder.service';
 
+import { HttpModule } from '@angular/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  { path: '', redirectTo: '/salesorderlist',  pathMatch: 'full' },
+  { path: 'salesorderlist', component: SalesOrderListComponent },
+  { path: 'addsalesorder', component: AddSalesOrderComponent }
+  // { path: 'detail/:id', component: HeroDetailComponent },
+  // { path: 'heroes', component: HeroesComponent },
+  // { path: 'addhero', component: HeroFormComponent },
+  // { path: 'TestRXJS', component: TestRxjsComponent }
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,9 +31,14 @@ import { SalesorderService } from './salesorder.service';
     SalesOrderDetailComponent
   ],
   imports: [
-    BrowserModule
+    RouterModule.forRoot(routes),
+    BrowserModule,
+    HttpClientModule,
+    HttpModule
+    
   ],
-  providers: [SalesorderService],
+  exports:[RouterModule],
+  providers: [SalesorderService,HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

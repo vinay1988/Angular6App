@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { SalesorderService } from '../salesorder.service';
+import { SalesOrder } from '../SalesOrder';
+
 
 @Component({
   selector: 'app-sales-order-list',
@@ -6,10 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sales-order-list.component.css']
 })
 export class SalesOrderListComponent implements OnInit {
+  _salesorder:SalesOrder[];
 
-  constructor() { }
+   getSalesOrder():void{
+     this.service.getSalesOrder()
+     .subscribe(_salesorder=>this._salesorder=_salesorder);
+   }
+
+  constructor(private service:SalesorderService) { }
 
   ngOnInit() {
+    this.getSalesOrder();
   }
 
 }
