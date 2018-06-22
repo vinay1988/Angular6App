@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { SalesOrder } from '../SalesOrder';
+import { SalesorderService } from '../salesorder.service';
+
 
 @Component({
   selector: 'app-add-sales-order',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddSalesOrderComponent implements OnInit {
 
-  constructor() { }
+  public SO:SalesOrder;
+  
+  constructor(private service:SalesorderService) { 
+    
+  }
+
+  onSubmit()
+  {
+    
+    alert(JSON.stringify(this.SO))
+    this.service.addSalesOrder(this.SO);
+  }
 
   ngOnInit() {
+    this.SO=new SalesOrder();
   }
 
 }

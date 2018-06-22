@@ -11,6 +11,7 @@ import { SalesorderService } from './salesorder.service';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from "@angular/forms";
 
 const routes: Routes = [
   { path: '', redirectTo: '/salesorderlist',  pathMatch: 'full' },
@@ -34,7 +35,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     BrowserModule,
     HttpClientModule,
-    HttpModule
+    HttpModule,
+    FormsModule
     
   ],
   exports:[RouterModule],

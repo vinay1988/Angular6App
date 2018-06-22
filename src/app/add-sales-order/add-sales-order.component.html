@@ -66,7 +66,7 @@ input[type=submit]:hover {
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
     .col-25, .col-75, input[type=submit] {
-        width: 100%;
+        width: 90%;
         margin-top: 0;
     }
 }
@@ -78,24 +78,24 @@ input[type=submit]:hover {
 <p>Resize the browser window to see the effect. When the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other.</p>
 
 <div class="container">
-  <form action="/action_page.php">
+  <form id="frmSave">
     <div class="row">
       <div class="col-25">
-        <label for="fname">First Name</label>
+        <label for="lnumb">Number</label>
       </div>
       <div class="col-75">
-        <input type="text" id="fname" name="firstname" placeholder="Your name..">
+        <input type="text" id="lnumb" name="Number" [(ngModel)]="SO.SalesOrderNumber" placeholder="Number">
       </div>
     </div>
     <div class="row">
       <div class="col-25">
-        <label for="lname">Last Name</label>
+        <label for="ldate">Last Name</label>
       </div>
       <div class="col-75">
-        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+        <input type="date" id="ldate" name="date" [(ngModel)]="SO.CurrencyDate" placeholder="Date">
       </div>
     </div>
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-25">
         <label for="country">Country</label>
       </div>
@@ -106,17 +106,17 @@ input[type=submit]:hover {
           <option value="usa">USA</option>
         </select>
       </div>
-    </div>
+    </div> -->
     <div class="row">
       <div class="col-25">
-        <label for="subject">Subject</label>
+        <label for="lnote">Subject</label>
       </div>
       <div class="col-75">
-        <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+        <textarea id="lnote" name="notes" placeholder="notes" [(ngModel)]="SO.Notes" ></textarea>
       </div>
     </div>
     <div class="row">
-      <input type="submit" value="Submit">
+      <input type="submit" (click)="onSubmit()" value="Submit">
     </div>
   </form>
 </div>
