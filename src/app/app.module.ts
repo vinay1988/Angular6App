@@ -13,6 +13,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from "@angular/forms";
 
+
 const routes: Routes = [
   { path: '', redirectTo: '/salesorderlist',  pathMatch: 'full' },
   { path: 'salesorderlist', component: SalesOrderListComponent },
@@ -30,6 +31,7 @@ const routes: Routes = [
     AddSalesOrderComponent,
     EditSalesOrderComponent,
     SalesOrderDetailComponent
+    
   ],
   imports: [
     RouterModule.forRoot(routes),
