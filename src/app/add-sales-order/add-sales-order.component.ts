@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SalesOrder } from '../SalesOrder';
 import { SalesorderService } from '../salesorder.service';
 import { Router } from '@angular/router';
+import { Currency } from '../Currency';
 
 
 @Component({
@@ -13,6 +14,7 @@ export class AddSalesOrderComponent implements OnInit {
 
   public SO:SalesOrder;
   public retSO:any;
+  public _currency:Currency[];
   
   constructor(private service:SalesorderService,public router: Router) { 
     
@@ -42,8 +44,14 @@ export class AddSalesOrderComponent implements OnInit {
   
       }
 
+      getCurrencies():void{
+        this.service.getCurrency()
+        .subscribe(curr=>this._currency=curr);
+      }
+
   ngOnInit() {
     this.SO=new SalesOrder();
+    this.getCurrencies();
   }
 
 }

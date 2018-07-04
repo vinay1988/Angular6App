@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SalesOrder } from './SalesOrder';
 import { Observable, throwError } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Currency } from './Currency';
+
 
 
 
@@ -14,6 +15,7 @@ export class SalesorderService {
     throw new Error("Method not implemented.");
   }
   private soUrl = 'http://localhost/MyAngAppAPI/api/values';
+  private _currency = 'http://localhost/MyAngAppAPI/api/Currency';
  
 saleorderr:SalesOrder;
   getSalesOrder():  Observable<SalesOrder[]> {
@@ -63,7 +65,11 @@ saleorderr:SalesOrder;
 //                      //.catch((error:any) => Observable.throw(error.json().error || 'Server error')); // ...errors if any
 // }
 
+getCurrency():  Observable<Currency[]> {
+   
+  return this.http.get<Currency[]>(this._currency);
   
+}
 
   constructor(private http: HttpClient) {
     this.saleorderr=new SalesOrder();

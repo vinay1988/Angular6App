@@ -78,22 +78,28 @@ input[type=submit]:hover {
 <p>Resize the browser window to see the effect. When the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other.</p>
 
 <div class="container">
-  <form id="frmSave">
+  <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
     <div class="row">
       <div class="col-25">
         <label for="lnumb">Number</label>
       </div>
       <div class="col-75">
-        <input type="text" id="lnumb" name="Number" [(ngModel)]="SO.SalesOrderNumber" placeholder="Number">
+        <input type="text" id="lnumb" name="Number" [(ngModel)]="SO.SalesOrderNumber" #Number="ngModel" [ngClass]="{ 'is-invalid': f.submitted && Number.invalid }" required placeholder="Number" >
       </div>
+      <div *ngIf="f.submitted && Number.invalid" class="invalid-feedback">
+        <div *ngIf="Number.errors.required">Number is required</div>
+    </div>
     </div>
     <div class="row">
       <div class="col-25">
         <label for="ldate">Last Name</label>
       </div>
       <div class="col-75">
-        <input type="date" id="ldate" name="date" [(ngModel)]="SO.CurrencyDate" placeholder="Date">
+        <input type="date" id="ldate" name="date" [(ngModel)]="SO.CurrencyDate" #date="ngModel" [ngClass]="{ 'is-invalid': f.submitted && date.invalid }" required placeholder="Date">
       </div>
+      <div *ngIf="f.submitted && date.invalid" class="invalid-feedback">
+        <div *ngIf="date.errors.required">Date is required</div>
+    </div>
     </div>
     <!-- <div class="row">
       <div class="col-25">
@@ -112,11 +118,34 @@ input[type=submit]:hover {
         <label for="lnote">Subject</label>
       </div>
       <div class="col-75">
-        <textarea id="lnote" name="notes" placeholder="notes" [(ngModel)]="SO.Notes" ></textarea>
+        <textarea id="lnote" name="notes" placeholder="notes" [(ngModel)]="SO.Notes" #notes="ngModel" [ngClass]="{ 'is-invalid': f.submitted && notes.invalid }" required ></textarea>
+        <div *ngIf="f.submitted && notes.invalid" class="invalid-feedback">
+          <div *ngIf="notes.errors.required">Notes is required</div>
       </div>
+      </div>
+      
+    </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="lnote">Subject</label>
+      </div>
+      <div class="col-75">
+          <!-- (change)="filterForeCasts($event.target.value)" -->
+        <select name="lstCurrency" [(ngModel)]="SO.CurrencyNo" #lstCurrency="ngModel" [ngClass]="{ 'is-invalid': f.submitted && lstCurrency.invalid }" required>
+          <option value="">--Select--</option>
+          <option *ngFor="let currency of _currency" value={{CurrencyId}}>
+              {{CurrencyDescription}}
+          </option>
+  </select>
+        <div *ngIf="f.submitted && lstCurrency.invalid" class="invalid-feedback">
+          <div *ngIf="lstCurrency.errors.required">Currency is required</div>
+      </div>
+      </div>
+      
     </div>
     <div class="row">
-      <input type="submit" (click)="onSubmit()" value="Submit">
+      <input type="submit"  value="Submit">
     </div>
   </form>
 </div>
