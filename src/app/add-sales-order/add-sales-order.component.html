@@ -132,11 +132,12 @@ input[type=submit]:hover {
       </div>
       <div class="col-75">
           <!-- (change)="filterForeCasts($event.target.value)" -->
-        <select name="lstCurrency" [(ngModel)]="SO.CurrencyNo" #lstCurrency="ngModel" [ngClass]="{ 'is-invalid': f.submitted && lstCurrency.invalid }" required>
-          <option value="">--Select--</option>
-          <option *ngFor="let currency of _currency" value={{CurrencyId}}>
-              {{CurrencyDescription}}
+        <select name="lstCurrency"  [(ngModel)]="SO.CurrencyNo" #lstCurrency="ngModel" [ngClass]="{ 'is-invalid': f.submitted && lstCurrency.invalid }" required>
+          <option value="0" selected="true">--Select--</option>
+          <option *ngFor="let cu of _currency" value={{cu.CurrencyId}}>
+              {{cu.CurrencyDescription}}
           </option>
+         
   </select>
         <div *ngIf="f.submitted && lstCurrency.invalid" class="invalid-feedback">
           <div *ngIf="lstCurrency.errors.required">Currency is required</div>
