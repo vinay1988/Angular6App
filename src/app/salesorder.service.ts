@@ -71,6 +71,13 @@ getCurrency():  Observable<Currency[]> {
   
 }
 
+
+   getSalesOrderById(id) : any{
+   
+   return this.http.get(this.soUrl+'/'+id);
+   
+  }
+
   constructor(private http: HttpClient) {
     this.saleorderr=new SalesOrder();
    }

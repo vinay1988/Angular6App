@@ -17,7 +17,8 @@ import { FormsModule } from "@angular/forms";
 const routes: Routes = [
   { path: '', redirectTo: '/salesorderlist',  pathMatch: 'full' },
   { path: 'salesorderlist', component: SalesOrderListComponent },
-  { path: 'addsalesorder', component: AddSalesOrderComponent }
+  { path: 'addsalesorder', component: AddSalesOrderComponent },
+   { path: 'editsalesorder/:id', component: EditSalesOrderComponent },
   // { path: 'detail/:id', component: HeroDetailComponent },
   // { path: 'heroes', component: HeroesComponent },
   // { path: 'addhero', component: HeroFormComponent },

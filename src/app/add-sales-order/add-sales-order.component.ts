@@ -3,7 +3,6 @@ import { SalesOrder } from '../SalesOrder';
 import { SalesorderService } from '../salesorder.service';
 import { Router } from '@angular/router';
 import { Currency } from '../Currency';
-import { currentId } from 'async_hooks';
 
 
 @Component({
@@ -54,8 +53,7 @@ export class AddSalesOrderComponent implements OnInit {
   ngOnInit() {
     this.SO=new SalesOrder();
     this.getCurrencies();
-
-
+    
   }
 
  
