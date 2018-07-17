@@ -26,7 +26,7 @@ export class AddSalesOrderComponent implements OnInit {
     
      this.service.addSalesOrder(this.SO)
     .subscribe(res => {console.log("saved"); this.retSO= res;
-    alert(this.retSO.SalesOrderId) ;
+    //alert(this.retSO.SalesOrderId) ;
   if(this.retSO.SalesOrderId>0)
   {
     this.router.navigate(['/salesorderlist']);

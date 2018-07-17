@@ -78,7 +78,7 @@ input[type=submit]:hover {
 <p>Resize the browser window to see the effect. When the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other.</p>
 
 <div class="container">
-  <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+  <form  #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()"  novalidate>
     <div class="row">
       <div class="col-25">
         <label for="lnumb">Number</label>
@@ -101,18 +101,7 @@ input[type=submit]:hover {
         <div *ngIf="date.errors.required">Date is required</div>
     </div>
     </div>
-    <!-- <div class="row">
-      <div class="col-25">
-        <label for="country">Country</label>
-      </div>
-      <div class="col-75">
-        <select id="country" name="country">
-          <option value="australia">Australia</option>
-          <option value="canada">Canada</option>
-          <option value="usa">USA</option>
-        </select>
-      </div>
-    </div> -->
+
     <div class="row">
       <div class="col-25">
         <label for="lnote">Subject</label>

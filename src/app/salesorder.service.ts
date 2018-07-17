@@ -35,6 +35,11 @@ saleorderr:SalesOrder;
        // );
       }
 
+      
+ public updateSalesOrder(updateso:SalesOrder) {
+  return  this.http.put(this.soUrl+'/'+updateso.SalesOrderId, updateso);
+ }
+
 
       
 

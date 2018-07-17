@@ -35,7 +35,7 @@ tr:nth-child(even) {
     <th>Edit</th>
   </tr>
   <tr *ngFor="let so of _salesorder">
-    <td>{{so.SalesOrderNumber}}</td>
+    <td><a  routerLink="/Detail/{{so.SalesOrderId}}">{{so.SalesOrderNumber}}</a></td>
     <td>{{so.DLUP}}</td>
     <td>{{so.Notes}}</td>
     <td><a  routerLink="/editsalesorder/{{so.SalesOrderId}}">Edit</a> </td>

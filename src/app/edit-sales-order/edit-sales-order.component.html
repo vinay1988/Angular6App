@@ -76,7 +76,7 @@ input[type=submit]:hover {
 
 
 <div class="container">
-  <form name="form" >
+  <form name="form" (ngSubmit)="onSubmit()" >
     <div class="row">
       <div class="col-25">
         <label for="lnumb">Number {{SON}}</label>
@@ -98,7 +98,7 @@ input[type=submit]:hover {
    
     <div class="row">
       <div class="col-25">
-        <label for="lnote">Subject</label>
+        <label for="lnote">Notes</label>
       </div>
       <div class="col-75">
         <textarea id="lnote" name="notes" placeholder="notes" [(ngModel)]="SO.Notes"  ></textarea>
@@ -109,7 +109,7 @@ input[type=submit]:hover {
 
     <div class="row">
       <div class="col-25">
-        <label for="lnote">Subject</label>
+        <label for="lnote">Currency</label>
       </div>
       <div class="col-75">
           <!-- (change)="filterForeCasts($event.target.value)" -->

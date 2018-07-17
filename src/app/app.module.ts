@@ -19,6 +19,7 @@ const routes: Routes = [
   { path: 'salesorderlist', component: SalesOrderListComponent },
   { path: 'addsalesorder', component: AddSalesOrderComponent },
    { path: 'editsalesorder/:id', component: EditSalesOrderComponent },
+   { path: 'Detail/:id', component: SalesOrderDetailComponent },
   // { path: 'detail/:id', component: HeroDetailComponent },
   // { path: 'heroes', component: HeroesComponent },
   // { path: 'addhero', component: HeroFormComponent },

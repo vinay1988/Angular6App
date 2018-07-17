@@ -30,4 +30,5 @@ export class SalesOrder{
       IncotermNo  : number;
       CreatedBy  : number;
       CreateDate : Date;
+      CurrencyDesc:string;
 }
