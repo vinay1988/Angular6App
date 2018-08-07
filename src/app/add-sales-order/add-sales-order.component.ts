@@ -14,7 +14,7 @@ export class AddSalesOrderComponent implements OnInit {
 
   public SO:SalesOrder;
   public retSO:any;
-   _currency:Currency[];
+   public _currency:Currency[];
   
   constructor(private service:SalesorderService,public router: Router) { 
     
@@ -51,9 +51,10 @@ export class AddSalesOrderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this._currency=[];
     this.SO=new SalesOrder();
     this.getCurrencies();
-    
+    //alert(this._currency);
   }
 
  
