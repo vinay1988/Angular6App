@@ -9,17 +9,32 @@ import { SalesOrder } from '../SalesOrder';
   styleUrls: ['./sales-order-list.component.css']
 })
 export class SalesOrderListComponent implements OnInit {
-  _salesorder:SalesOrder[];
+  public _salesorder:any[];
 
    getSalesOrder():void{
      this.service.getSalesOrder()
-     .subscribe(_salesorder=>this._salesorder=_salesorder);
+     .subscribe(so=>{this._salesorder=so;});
    }
 
-  constructor(private service:SalesorderService) { }
+  constructor(private service:SalesorderService) { 
+    
+  }
 
   ngOnInit() {
-    this.getSalesOrder();
-  }
+
+    //localStorage.clear();
+    //alert(localStorage.getItem('userToken'));
+    if (localStorage.getItem('userToken') == null)
+    {
+       this.service.userAuthentication('admin','admin123').subscribe((data : any)=>{
+        localStorage.setItem('userToken',data.access_token);
+        alert(localStorage.getItem('userToken'));
+        
+    }
+      )}
+      
+      this._salesorder=[];
+      this.getSalesOrder();
+    }
 
 }

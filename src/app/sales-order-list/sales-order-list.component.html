@@ -34,11 +34,11 @@ tr:nth-child(even) {
     <th>Notes</th>
     <th>Edit</th>
   </tr>
-  <tr *ngFor="let so of _salesorder">
-    <td><a  routerLink="/Detail/{{so.SalesOrderId}}">{{so.SalesOrderNumber}}</a></td>
-    <td>{{so.DLUP}}</td>
-    <td>{{so.Notes}}</td>
-    <td><a  routerLink="/editsalesorder/{{so.SalesOrderId}}">Edit</a> </td>
+  <tr *ngFor="let so1 of _salesorder">
+    <td><a  routerLink="/Detail/{{so1.salesOrderId}}">{{so1.salesOrderNumber}}</a></td>
+    <td>{{so1.dlup}}</td>
+    <td>{{so1.notes}}</td>
+    <td><a  routerLink="/editsalesorder/{{so1.salesOrderId}}">Edit</a> </td>
   </tr>
 </table>
 

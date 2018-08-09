@@ -82,7 +82,7 @@ input[type=submit]:hover {
         <label for="lnumb">Number {{SON}}</label>
       </div>
       <div class="col-75">
-        <input type="text" id="lnumb" name="Number" [(ngModel)]="SO.SalesOrderNumber"  required placeholder="Number" >
+        <input type="text" id="lnumb" name="Number" [(ngModel)]="SO.salesOrderNumber"  required placeholder="Number" >
       </div>
      
     </div>
@@ -91,7 +91,7 @@ input[type=submit]:hover {
         <label for="ldate">Date</label>
       </div>
       <div class="col-75">
-        <input type="date" id="ldate" name="date" [(ngModel)]="SO.CurrencyDate"  placeholder="Date">
+        <input type="date" id="ldate" name="date" [(ngModel)]="SO.currencyDate"  placeholder="Date">
       </div>
      
     </div>
@@ -101,7 +101,7 @@ input[type=submit]:hover {
         <label for="lnote">Notes</label>
       </div>
       <div class="col-75">
-        <textarea id="lnote" name="notes" placeholder="notes" [(ngModel)]="SO.Notes"  ></textarea>
+        <textarea id="lnote" name="notes" placeholder="notes" [(ngModel)]="SO.notes"  ></textarea>
        
       </div>
       
@@ -113,10 +113,10 @@ input[type=submit]:hover {
       </div>
       <div class="col-75">
           <!-- (change)="filterForeCasts($event.target.value)" -->
-        <select name="lstCurrency"  [(ngModel)]="SO.CurrencyNo" >
+        <select name="lstCurrency"  [(ngModel)]="SO.currencyNo" >
           <option value="0" selected="true">--Select--</option>
-          <option *ngFor="let cu of _currency" value={{cu.CurrencyId}}>
-              {{cu.CurrencyDescription}}
+          <option *ngFor="let cu of _currency" value={{cu.currencyId}}>
+              {{cu.currencyDescription}}
           </option>
          
   </select>

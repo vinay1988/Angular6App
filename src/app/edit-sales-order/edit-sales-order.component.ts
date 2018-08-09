@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SalesorderService } from '../salesorder.service';
 import { SalesOrder } from '../SalesOrder';
 import { toDate } from '@angular/common/src/i18n/format_date';
@@ -11,18 +11,18 @@ import { Currency } from '../Currency';
   styleUrls: ['./edit-sales-order.component.css']
 })
 export class EditSalesOrderComponent implements OnInit {
-  public SO:SalesOrder=new SalesOrder();
+  public SO:any=new SalesOrder();
   SON: number;
   _currency:Currency[];
   
-  constructor(private route: ActivatedRoute,private service:SalesorderService) { }
+  constructor(private route: ActivatedRoute,private service:SalesorderService,public router: Router) { }
 
     getSalesOrderById():void
     {
       this.service.getSalesOrderById(this.route.snapshot.params['id'])
         .subscribe(_so=> {
           this.SO=_so;
-          var d =new Date(this.SO.CurrencyDate);
+          var d =new Date(this.SO.currencyDate);
           this.SO.CurrencyDate = this.Dateformat(d,"input");
           });
 
@@ -54,8 +54,9 @@ onSubmit()
 {
   
   
-   this.service.updateSalesOrder(this.SO)
+   this.service.updateSalesOrder(this.SO,this.route.snapshot.params['id'])
   .subscribe(res => {console.log("saved"); 
+  this.router.navigate(['/salesorderlist']);
 // if(this.retSO.SalesOrderId>0)
 // {
 //   this.router.navigate(['/salesorderlist']);

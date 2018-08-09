@@ -25,24 +25,21 @@ export class AddSalesOrderComponent implements OnInit {
     //let so:Observable<SalesOrder[]>;
     
      this.service.addSalesOrder(this.SO)
-    .subscribe(res => {console.log("saved"); this.retSO= res;
-    //alert(this.retSO.SalesOrderId) ;
-  if(this.retSO.SalesOrderId>0)
-  {
+    .subscribe(res => this.retSO = res);
     this.router.navigate(['/salesorderlist']);
-  }
+ //   alert(this.retSO.salesOrderId) ;
+  // if(this.retSO.salesOrderId>0)
+  // {
+  //   this.router.navigate(['/salesorderlist']);
+  // }
   
 
   
-  }
-          ,() => { console.error("error while save"); }
-           //return throwError(error);}
-          
-          
-       );
+}
+        
    
   
-      }
+      
 
       getCurrencies():void{
            this.service.getCurrency()
@@ -53,6 +50,7 @@ export class AddSalesOrderComponent implements OnInit {
   ngOnInit() {
     this._currency=[];
     this.SO=new SalesOrder();
+    this.retSO=new SalesOrder();
     this.getCurrencies();
     //alert(this._currency);
   }

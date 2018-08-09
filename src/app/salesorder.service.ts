@@ -19,14 +19,16 @@ export class SalesorderService {
  
 saleorderr:SalesOrder;
   getSalesOrder():  Observable<SalesOrder[]> {
-   
-   return this.http.get<SalesOrder[]>(this.soUrl);
+    
+    var reqHeader = new HttpHeaders({ 'Authorization': "Bearer " + localStorage.getItem('userToken'),'Access-Control-Allow-Origin': '*','Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS','Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token' });
+    //header('Access-Control-Allow-Origin: *');
+   return this.http.get<SalesOrder[]>(this.soUrl,{ headers: reqHeader });
    
   }
 
  public addSalesOrder(addso:SalesOrder) {
-   
-  return  this.http.post(this.soUrl, addso);
+  var reqHeader = new HttpHeaders({ 'Authorization': "Bearer " + localStorage.getItem('userToken'),'Access-Control-Allow-Origin': '*','Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS','Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token' });
+  return  this.http.post(this.soUrl, addso,{ headers: reqHeader });
         // .subscribe(res => {console.log("saved"); return (res); }
         //   ,error=>{console.error("error while save");
         //    return throwError(error);}
@@ -36,8 +38,9 @@ saleorderr:SalesOrder;
       }
 
       
- public updateSalesOrder(updateso:SalesOrder) {
-  return  this.http.put(this.soUrl+'/'+updateso.SalesOrderId, updateso);
+ public updateSalesOrder(updateso:SalesOrder,id) {
+  var reqHeader = new HttpHeaders({ 'Authorization': "Bearer " + localStorage.getItem('userToken'),'Access-Control-Allow-Origin': '*','Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS','Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token' });
+  return  this.http.put(this.soUrl+'/'+id, updateso,{ headers: reqHeader });
  }
 
 
@@ -78,12 +81,22 @@ getCurrency():  Observable<Currency[]> {
 
 
    getSalesOrderById(id) : any{
+    var reqHeader = new HttpHeaders({ 'Authorization': "Bearer " + localStorage.getItem('userToken'),'Access-Control-Allow-Origin': '*','Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS','Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token' });
+   return this.http.get(this.soUrl+'/'+id,{ headers: reqHeader });
    
-   return this.http.get(this.soUrl+'/'+id);
-   
+  }
+
+  //admin,admin123
+  userAuthentication(userName, password) {
+    var data = "grant_type=password"+"&username=" + userName + "&password=" + password;
+    
+    var reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-urlencoded','Cache-Control': 'no-cache' });
+    return this.http.post('http://localhost/MyAngAppAPI/token', data);
   }
 
   constructor(private http: HttpClient) {
     this.saleorderr=new SalesOrder();
+    
+
    }
 }

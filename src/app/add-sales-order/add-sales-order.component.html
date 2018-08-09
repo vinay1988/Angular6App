@@ -123,8 +123,8 @@ input[type=submit]:hover {
           <!-- (change)="filterForeCasts($event.target.value)" -->
         <select name="lstCurrency"  >
           <option value="0" selected="true">--Select--</option>
-          <option *ngFor="let cu of _currency" value={{cu.CurrencyId}}>
-              {{cu.CurrencyCode}}
+          <option *ngFor="let cu of _currency" value={{cu.currencyId}}>
+              {{cu.currencyCode}}
           </option>
          
   </select>
