@@ -1,33 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    width: 100%;
-    border: 1px solid #ddd;
-}
 
-th, td {
-    text-align: left;
-    padding: 16px;
-}
-
-tr:nth-child(even) {
-    background-color: #f2f2f2
-}
-</style>
-</head>
-<body>
   <div>
     <a  routerLink="/addsalesorder">
      Add SO
     </a>
   </div>
   <br>
-<table>
+<!-- <table>
   <tr>
     <th>No</th>
     <th>Date</th>
@@ -40,9 +18,18 @@ tr:nth-child(even) {
     <td>{{so1.notes}}</td>
     <td><a  routerLink="/editsalesorder/{{so1.salesOrderId}}">Edit</a> </td>
   </tr>
-</table>
+</table> -->
 
 
-
-</body>
-</html>
+  <div class="row">
+    <div class="col">No</div>
+    <div class="col">Date</div>
+    <div class="col">Notes</div>
+    <div class="col">Edit</div>
+  </div>
+  <div class="row" *ngFor="let so1 of _salesorder">
+      <div class="col"><a  routerLink="/Detail/{{so1.salesOrderId}}">{{so1.salesOrderNumber}}</a></div>
+      <div class="col">{{so1.dlup}}</div>
+      <div class="col">{{so1.notes}}</div>
+      <div class="col"><a  routerLink="/editsalesorder/{{so1.salesOrderId}}">Edit</a> </div>
+  </div>
