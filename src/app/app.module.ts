@@ -12,14 +12,18 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from "@angular/forms";
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth.guard';
+
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/salesorderlist',  pathMatch: 'full' },
-  { path: 'salesorderlist', component: SalesOrderListComponent },
-  { path: 'addsalesorder', component: AddSalesOrderComponent },
-   { path: 'editsalesorder/:id', component: EditSalesOrderComponent },
-   { path: 'Detail/:id', component: SalesOrderDetailComponent },
+  { path: '', redirectTo: '/salesorderlist',  pathMatch: 'full',canActivate:[AuthGuard] },
+  { path: 'login', component: LoginComponent },
+  { path: 'salesorderlist', component: SalesOrderListComponent,canActivate:[AuthGuard] },
+  { path: 'addsalesorder', component: AddSalesOrderComponent,canActivate:[AuthGuard]  },
+   { path: 'editsalesorder/:id', component: EditSalesOrderComponent ,canActivate:[AuthGuard] },
+   { path: 'Detail/:id', component: SalesOrderDetailComponent,canActivate:[AuthGuard]  },
   // { path: 'detail/:id', component: HeroDetailComponent },
   // { path: 'heroes', component: HeroesComponent },
   // { path: 'addhero', component: HeroFormComponent },
@@ -32,7 +36,9 @@ const routes: Routes = [
     SalesOrderListComponent,
     AddSalesOrderComponent,
     EditSalesOrderComponent,
-    SalesOrderDetailComponent
+    SalesOrderDetailComponent,
+    LoginComponent
+    
     
   ],
   imports: [

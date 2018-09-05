@@ -24,14 +24,13 @@ export class SalesOrderListComponent implements OnInit {
 
     //localStorage.clear();
     //alert(localStorage.getItem('userToken'));
-    if (localStorage.getItem('userToken') == null)
-    {
-       this.service.userAuthentication('admin','admin123').subscribe((data : any)=>{
-        localStorage.setItem('userToken',data.access_token);
-        alert(localStorage.getItem('userToken'));
+    // if (localStorage.getItem('userToken') == null)
+    // {
+    //    this.service.userAuthentication('admin','admin123').subscribe((data : any)=>{
+    //     localStorage.setItem('userToken',data.access_token);
         
-    }
-      )}
+    // }
+    //   )}
       
       this._salesorder=[];
       this.getSalesOrder();
